@@ -98,6 +98,19 @@ export default function App() {
           </div>
         </aside>
       </main>
+
+      <a
+        className="linkedin-credit"
+        href="https://linkedin.com/in/lucascambera/"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="LinkedIn de Lucas Cambera"
+      >
+        <span className="linkedin-logo" aria-hidden="true">
+          in
+        </span>
+        linkedin.com/in/lucascambera/
+      </a>
     </div>
   );
 }

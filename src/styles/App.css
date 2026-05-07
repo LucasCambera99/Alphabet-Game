@@ -1,6 +1,8 @@
 .app {
+  display: flex;
+  flex-direction: column;
   min-height: 100svh;
-  padding: 24px;
+  padding: clamp(14px, 2.2vw, 28px);
   color: #f8fbff;
   background:
     radial-gradient(circle at 22% 18%, rgba(92, 185, 255, 0.34), transparent 32%),
@@ -10,7 +12,7 @@
 
 .topbar,
 .game-layout {
-  width: min(1180px, 100%);
+  width: min(1360px, 100%);
   margin: 0 auto;
 }
 
@@ -19,7 +21,7 @@
   align-items: end;
   justify-content: space-between;
   gap: 18px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .field {
@@ -57,10 +59,11 @@
 }
 
 .score {
-  min-width: 128px;
-  padding: 12px 14px;
+  min-width: clamp(150px, 15vw, 190px);
+  padding: 16px 18px;
   border-radius: 8px;
   color: #ffffff;
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
   font-weight: 800;
 }
 
@@ -74,21 +77,23 @@
 
 .game-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 310px;
-  gap: 28px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 24vw, 370px);
+  gap: clamp(18px, 3vw, 42px);
+  align-items: start;
+  flex: 1;
 }
 
 .stage {
   position: relative;
   display: grid;
-  min-height: 660px;
+  min-height: min(70svh, 700px);
+  padding-top: clamp(12px, 3svh, 34px);
   place-items: center;
 }
 
 .rosco {
-  --rosco-size: min(74svh, 650px, 86vw);
-  --letter-size: clamp(38px, 6.6vw, 58px);
+  --rosco-size: min(68svh, 680px, calc(100vw - 460px));
+  --letter-size: clamp(40px, 4.5vw, 60px);
   position: relative;
   width: var(--rosco-size);
   height: var(--rosco-size);
@@ -166,8 +171,9 @@
 
 .controls {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   padding: 18px;
+  margin-top: clamp(16px, 4svh, 42px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
   background: rgba(3, 20, 61, 0.68);
@@ -216,6 +222,7 @@ button:hover {
 .action {
   min-height: 58px;
   color: #ffffff;
+  font-size: 1rem;
 }
 
 .action.correct {
@@ -241,9 +248,45 @@ kbd {
   font-size: 0.78rem;
 }
 
+.linkedin-credit {
+  position: fixed;
+  right: 16px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: rgba(201, 228, 255, 0.58);
+  background: rgba(3, 26, 78, 0.32);
+  font-size: clamp(0.78rem, 1.5vw, 0.92rem);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.linkedin-credit:hover {
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(3, 26, 78, 0.46);
+}
+
+.linkedin-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  color: rgba(3, 26, 78, 0.78);
+  background: rgba(201, 228, 255, 0.52);
+  font-size: 0.85rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
 @media (max-width: 920px) {
   .app {
-    padding: 16px;
+    padding: 14px;
   }
 
   .topbar,
@@ -262,7 +305,13 @@ kbd {
   }
 
   .stage {
-    min-height: min(92vw, 620px);
+    min-height: min(88vw, 620px);
+    padding-top: 10px;
+  }
+
+  .rosco {
+    --rosco-size: min(84vw, 600px);
+    --letter-size: clamp(34px, 7vw, 52px);
   }
 
   .controls {
@@ -274,8 +323,8 @@ kbd {
 
 @media (max-width: 520px) {
   .rosco {
-    --rosco-size: min(88vw, 440px);
-    --letter-size: 35px;
+    --rosco-size: min(92vw, 440px);
+    --letter-size: 34px;
   }
 
   .center-panel {
@@ -284,5 +333,22 @@ kbd {
 
   .timer {
     font-size: 3rem;
+  }
+
+  .button-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action,
+  .action.correct,
+  .action.wrong {
+    min-height: 66px;
+  }
+
+  .linkedin-credit {
+    right: 10px;
+    bottom: 10px;
+    max-width: calc(100vw - 20px);
+    overflow-wrap: anywhere;
   }
 }
